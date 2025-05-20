@@ -1,0 +1,26 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: todoapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: webapp
+  template:
+    metadata:
+      name: todoapp
+      labels:
+        name: webapp
+    spec:
+      containers:
+        - name: demo
+          image: sharanrh/todoapp:latest
+          ports:
+          - containerPort: 7000
+          resources:
+            limits:
+              cpu: 200m
+            requests:
+              cpu: 100m
+

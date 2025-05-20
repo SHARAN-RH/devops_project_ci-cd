@@ -1,0 +1,62 @@
+Started by user admin
+Running as SYSTEM
+Building in workspace /var/lib/jenkins/workspace/docker deployment
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/docker deployment/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/SHARAN-RH/devops_project_ci-cd.git # timeout=10
+Fetching upstream changes from https://github.com/SHARAN-RH/devops_project_ci-cd.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/SHARAN-RH/devops_project_ci-cd.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 0aae79083352589ae1b24773efe3847b1898e4af (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 0aae79083352589ae1b24773efe3847b1898e4af # timeout=10
+Commit message: "Upgraded node version id docker"
+ > git rev-list --no-walk 0aae79083352589ae1b24773efe3847b1898e4af # timeout=10
+[docker deployment] $ /bin/sh -xe /tmp/jenkins15010742620885255882.sh
++ docker build . -t todoapp
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 146B done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/node:18-alpine
+#2 DONE 0.9s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.1s
+
+#4 [1/5] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 6.55kB done
+#5 DONE 0.1s
+
+#6 [2/5] WORKDIR /app
+#6 CACHED
+
+#7 [3/5] COPY . .
+#7 CACHED
+
+#8 [4/5] RUN npm install
+#8 CACHED
+
+#9 [5/5] RUN npm run test
+#9 CACHED
+
+#10 exporting to image
+#10 exporting layers done
+#10 writing image sha256:8af2a132bb05a8b35be814f6d965ef8937adb7dac0bfa1e1f5b36091d778c3b6 0.0s done
+#10 naming to docker.io/library/todoapp 0.0s done
+#10 DONE 0.1s
++ docker rm -f myweb
+myweb
++ docker run -d --name myweb -p 7000:7000 todoapp
+874e828aa27e48d51421f47a9be40802fe1ede0f578387efdb753f7985ea2494
+Finished: SUCCESS
